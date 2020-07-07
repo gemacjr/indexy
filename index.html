@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My Heading</h2>
+
+<p>Play around with the code and click on the "Run" button to view the result.</p>
+
+<p id="demo"></p>
+
+<script>
+var preferences = `{
+"accountPreferenceDataList": [
+        {
+            "preference": "01/02/2020,01/03/2020",
+            "key": "29-121212",
+            "lastUpdatedBy": "retind20",
+            "createdBy": "wpprefdl",
+            "createTimeStamp": "11/09/2019 10:52 PM GMT",
+            "lastUpdateTimeStamp": "06/25/2020 08:09 PM GMT"
+        },
+        {
+            "preference": "07/05/2020,01/04/2020,05/12/2020,07/06/2020",
+            "key": "29-121212",
+            "lastUpdatedBy": "retind20",
+            "createdBy": "wpprefdl",
+            "createTimeStamp": "11/09/2019 10:52 PM GMT",
+            "lastUpdateTimeStamp": "06/25/2020 08:09 PM GMT"
+        },
+        {
+            "preference": "01/02/2020,01/02/2020,05/12/2020,07/03/2020",
+            "key": "29-121212",
+            "lastUpdatedBy": "retind20",
+            "createdBy": "wpprefdl",
+            "createTimeStamp": "11/09/2019 10:52 PM GMT",
+            "lastUpdateTimeStamp": "06/25/2020 08:09 PM GMT"
+        }
+   ]
+}`
+//var obj = JSON.parse(preferences); 
+function removeDupes(data){
+  return data.filter((value, index) => data.indexOf(value) === index);
+}
+
+let myStr = JSON.parse(preferences).accountPreferenceDataList[0].preference;
+let myDate = JSON.parse(preferences).accountPreferenceDataList[1].preference;
+let yDate = JSON.parse(preferences).accountPreferenceDataList[2].preference;
+let arraylength = JSON.parse(preferences).accountPreferenceDataList.length;
+let finalDate = myDate + "," + yDate + "," + myStr;
+let finalDate1 = myDate.concat(myStr,",",yDate);
+
+let dateSplit = finalDate.split();
+let newArray = removeDupes(dateSplit);
+console.log("the finalDate1 " +  typeof finalDate1);
+console.log(dateSplit);
+document.getElementById("demo").innerHTML = typeof newArray;
+</script>
+
+</body>
+</html>
+
